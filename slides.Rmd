@@ -370,9 +370,11 @@ ggplot(score_range, aes(x = reorder(Model, range), y = range)) +
 
 .pull-left70[
 ```{r echo=FALSE, error=FALSE, fig.width=7, fig.height = 5, message=FALSE, warning=FALSE,  out.width=1200, fig.fullwidth=TRUE, dpi = 900}
+
 load("FICO_challenge/vp.rds")
-plot(vp_gbm, bar_width = 2) + ylab("1 - AUC") + theme_light() + theme(legend.position = "none") + 
-  ggtitle("","")
+library(ingredients)
+library(ggplot2)
+plot(vp_gbm, bar_width = 2) + ylab("1 - AUC") + theme_light() + theme(legend.position = "none") + ggtitle("","")
 ```
 ]
 
