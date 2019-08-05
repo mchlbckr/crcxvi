@@ -595,7 +595,7 @@ D-48149 Münster
 
 Tel: +49 251 83 65615  
 E-Mail: michael.buecker@fh-muenster.de  
-https://en.fh-muenster.de/wirtschaft/index.php
+http://prof.buecker.ms
 ]
 
 .pull-right[
@@ -607,16 +607,16 @@ https://en.fh-muenster.de/wirtschaft/index.php
 ]
 ]
 
----
+<!-- --- -->
 
-class: inverse
-# Backup
+<!-- class: inverse -->
+<!-- # Backup -->
 
 
----
-class: empty
-background-image: url("https://media.giphy.com/media/lqVVqkqMolh9S/giphy.gif")
-background-size: contain
+<!-- --- -->
+<!-- class: empty -->
+<!-- background-image: url("https://media.giphy.com/media/lqVVqkqMolh9S/giphy.gif") -->
+<!-- background-size: contain -->
 
 
 
