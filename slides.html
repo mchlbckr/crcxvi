@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Transparency of Machine Learning Models in Credit Scoring</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Michael Bücker" />
+    <meta name="date" content="2019-01-01" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="libs/fhmuenster-css-0.0.1/fhmuenster.css" type="text/css" />
+    <link rel="stylesheet" href="libs/fhmuenster-css-0.0.1/fhmuenster-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+class: title-slide
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+# Transparency of 
+# Machine Learning Models 
+# in Credit Scoring
+ 
+
+## CRC Conference XVI
+
+&lt;br&gt; 
+### Michael Bücker, Gero Szepannek, Przemyslaw Biecek, 
+### Alicja Gosiewska and Mateusz Staniak
+
+&lt;br&gt; 
+#### 28 August 2019
+---
+
+
+
+
+layout: true
+
+
+
+&lt;div class="my-footer"&gt; Transparency of Machine Learning Models in Credict Scoring | Michael Bücker | CRC Converence XVI &lt;/div&gt;       
+
+
+
+
+
+
+---
+
+class: inverse
+# Introduction
+
+
+---
+
+# Introduction
+
++ Main requirement for Credit Scoring models: provide a risk prediction that is **as accurate as possible**
++ In addition, regulators demand these models to be **transparent and auditable**
++ Therefore, very **simple predictive models** such as Logistic Regression or Decision Trees are still widely used (Lessmann et al. 2015; Bischl et al. 2014) 
++ Superior predictive power of modern **Machine Learning algorithms** cannot be fully leveraged
++ A lot of **potential is missed**, leading to higher reserves or more credit defaults  (Szepannek 2017) 
+
+---
+
+# Research Approach
+
++ For an open data set we build a traditional and still state-of-the-art Score Card model 
++ In addition, we built alternative Machine Learning Black Box models
++ We  use model-agnostic methods for interpretable Machine Learning to showcase transparency of such models
++ For computations we use R and respective packages 
+(Biecek 2018; Molnar et al. 2018) 
+
+
+
+---
+
+
+# The incumbent: Score Cards
+
+.pull-left70[
+Steps for Score Card construction using Logistic Regression 
+(Szepannek 2017) 
+
+1. Automatic binning
+2. Manual binning
+3. WOE/Dummy transformation
+4. Variable shortlist selection 
+5. (Linear) modelling and automatic model selection
+6. Manual model selection 
+]
+
+
+.pull-right70[
+
+
+]
+---
+
+# The incumbent: Score Cards
+
+.pull-left70[
+Steps for Score Card construction using Logistic Regression 
+(Szepannek 2017) 
+
+1. Automatic binning
+2. &lt;a&gt;Manual binning&lt;/a&gt;
+3. WOE/Dummy transformation
+4. Variable shortlist selection 
+5. (Linear) modelling and automatic model selection
+6. Manual model selection 
+]
+
+
+.pull-right70[
+&lt;div align = "center"&gt;
+&lt;img src="img/binning.png" width=120%&gt;
+&lt;/div&gt;
+]
+---
+
+# The incumbent: Score Cards
+
+.pull-left70[
+Manual binning allows for
+
++  (univariate) non-linearity
++  (univariate) plausibility checks
++  integration of expert knowledge for binning of factors  
+
+&lt;a&gt;...but: only univariate effects (!)&lt;/a&gt;
+
+]
+
+--
+.pull-right70[
+... and means a lot of manual work
+&lt;div align = "center"&gt;
+&lt;img src="https://media.giphy.com/media/uJi32NRF7jOA8/giphy.gif" width=100%&gt;
+&lt;/div&gt;
+]
+
+---
+# The challenger models
+
+.pull-left[
+We tested a couple of Machine Learning algorithms ...
+
++ Random Forests (`randomForest`)
++ Gradient Boosting (`gbm`)
++ XGBoost (`xgboost`)
++ Support Vector Machines (`svm`)
++ Logistic Regression with spline based transformations (`rms`)
+]
+
+.pull-right[
+... and also two AutoML frameworks to beat the Score Card
+
++ [h2o AutoML](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html) (`h2o`)
++ [mljar.com](https://mljar.com/) (`mljar`)
+]
+---
+# Data set for study: xML Challenge by FICO
+
+.pull-left70[
++ Explainable Machine Learning Challenge by FICO (2019) 
++ Focus: Home Equity Line of Credit (HELOC) Dataset
++ Customers  requested a credit line in the range of $5,000 - $150,000
++ Task is to predict whether they will repay their HELOC account within 2 years
++ Number of observations: 2,615
++ Variables: 23 covariates (mostly numeric) and 1 target variable (risk performance "good" or "bad")
+]
+
+.pull-lright70[
+
+&lt;br&gt;
+&lt;a href = "https://community.fico.com/s/explainable-machine-learning-challenge"&gt;
+&lt;div align = "right"&gt;
+&lt;img src="img/FICO.png" width=25%&gt;
+&lt;/div&gt;
+&lt;a&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;a href = "https://www.fico.com/"&gt;
+&lt;div align = "right"&gt;
+&lt;img src="img/FICO2.jpeg" width=25%&gt;
+&lt;/div&gt;
+&lt;a&gt;
+]
+
+---
+class: inverse
+# Results: Model performance
+
+---
+
+
+
+# Results: Comparison of model performance
+
+.pull-left70[
+&lt;img src="slides_files/figure-html/unnamed-chunk-1-1.png" width="1200" /&gt;
+]
+
+.pull-right70[
++ Predictive power of the traditional Score Card model surprisingly good
++ Logistic Regression with spline based transformations best, using `rms` by Harrell Jr (2019) 
+]
+---
+
+# Results: Comparison of model performance
+
+.pull-left70[
+&lt;br&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-2-1.png" width="1000" /&gt;
+]
+
+.pull-right70[
+For comparison of explainability, we choose 
+
++ the Score Card, 
++ a Gradient Boosting model with 10,000 trees, 
++  a tuned Logistic Regression with splines using 13 variables
+]
+
+
+---
+class: inverse
+# Results: Global explanations
+
+---
+
+# Explainability of Machine Learning models
+
+.pull-left70[
+There are many model-agnostic methods for interpretable ML today; see Molnar (2019)  for a good overview.
+
++ Partial Dependence Plots (PDP)
++ Individual Conditional Expectation (ICE)
++ Accumulated Local Effects (ALE)
++ Feature Importance
++ Global Surrogate and Local Surrogate (LIME)
++ Shapley Values
++ ...
+]
+
+.pull-right70[
+&lt;div class = "wrap2"&gt;
+&lt;iframe class = "frame2"  src="https://christophm.github.io/interpretable-ml-book/"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+]
+---
+
+# Implementation in R: DALEX
+
+
+.pull-left70[
+&lt;div align = "center"&gt;
+&lt;img src="img/dalex.png" width=100%&gt;
+&lt;/div&gt;
+]
+
+.pull-right70[
++ Descriptive mAchine Learning EXplanations
++ DALEX is a set of tools that help to understand how complex models are working
+]
+
+---
+
+
+# Score Card: Variable importance as range of points
+.pull-left70[
+&lt;img src="slides_files/figure-html/unnamed-chunk-3-1.png" width="1200" /&gt;
+]
+
+
+.pull-right70[
+
++ Range of Score Card point as an indicator of relevance for predictions
++ Alternative: variance of Score Card points across applications
+
+]
+---
+# Model agnostic: Importance through drop-out loss
+
+.pull-left70[
+&lt;img src="slides_files/figure-html/unnamed-chunk-4-1.png" width="1200" /&gt;
+]
+
+.pull-right70[
+
++ The drop in model performance (here AUC) is measured after permutation of a single variable
++ The more siginficant the drop in performance, the more important the variable
+
+]
+
+
+
+---
+# Score Card: Variable explanation based on points
+
+.pull-left70[
+&lt;br&gt;
+&lt;img src="slides_files/figure-html/unnamed-chunk-5-1.png" width="1200" /&gt;
+]
+
+.pull-right70[
+
++ Score Card points for values of covariate show effect of single feature
++ Directly computed from coefficient estimates of the Logistic Regression
+
+]
+
+---
+# Model agnostic: Partial dependence plots
+
+.pull-left70[
+&lt;img src="slides_files/figure-html/unnamed-chunk-6-1.png" width="1200" /&gt;
+]
+
+.pull-right70[
+
++ Partial dependence plots created with (Biecek 2018) 
++ Interpretation very similar to marginal Score Card points
+
+]
+
+---
+class: inverse
+# Results: Local explanations
+
+---
+# Instance-level explanations
+
+.pull-left70[
++ Instance-level exploration helps to understand how a model yields a prediction for a single observation
++ Model-agnostic approaches are 
+  + additive Breakdowns
+  + Shapley Values 
+  + LIME
++ In Credit Scoring, this explanation makes each credit decision transparent
+]
+
+.pull-right70[
+]
+---
+# Score Card: Local explanations
+
+.pull-left70[
+&lt;img src="slides_files/figure-html/unnamed-chunk-7-1.png" width="1200" /&gt;
+]
+
+.pull-right70[
++ Instance-level exploration for Score Cards can simply use individual Score Card points 
++ This yields a breakdown of the scoring result by variable
+
+]
+
+---
+
+# Model agnostic: Variable contribution break down
+
+.pull-left70[
+&lt;img src="slides_files/figure-html/unnamed-chunk-8-1.png" width="1200" /&gt;
+]
+
+.pull-right70[
++ Such instance-level explorations can also be performed in a model-agnostic way
++ Unfortunately, for non-additive models, variable contributions depend on the ordering of variables
+]
+
+
+---
+
+# Model agnostic: Shapley values
+
+.pull-left70[
+&lt;img src="slides_files/figure-html/unnamed-chunk-9-1.png" width="1200" /&gt;
+]
+
+.pull-right70[
++ Shapley attributions are averages across all (or at least large number) of different orderings
++ Violet boxplots show distributions for attributions for a selected variable, while length of the bar stands for an average attribution
+]
+
+
+---
+class: inverse
+# Results: Conclusion
+
+---
+
+# Modeldown: HTML summaries for predictive Models 
+
+Rf. Biecek et al. (2019) 
+
+.pull-left70[
+&lt;div class = "wrap"&gt;
+&lt;iframe class = "frame"  src="http://gosiewska.com/examples/xai_in_credit_scoring/"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+]
+
+.pull-right70[
+&lt;br&gt;
+&lt;a&gt;
+&lt;div align = "center"&gt;
+&lt;img src="img/qr.png" width=120%&gt;
+&lt;/div&gt;
+&lt;/a&gt;
+]
+---
+
+# Conclusion
+
++ We have built models for Credit Scoring using Score Cards and Machine Learning
++ Predictive power of Machine Learning models was superior (in our example only slightly, other studies show clearer overperformance)
++ Model agnostic methods for interpretable Machine Learning are able to make predictions explainable in the same way
+
+---
+# References (1/3)
+
+Biecek, P. (2018). "DALEX: explainers for complex predictive
+models". In: _Journal of Machine Learning Research_ 19.84, pp.
+1-5.
+
+Biecek, P, M. Tatarynowicz, K. Romaszko, and M. Urbański (2019).
+_modelDown: Make Static HTML Website for Predictive Models_. R
+package version 1.0.1. URL:
+[https://CRAN.R-project.org/package=modelDown](https://CRAN.R-project.org/package=modelDown).
+
+Bischl, B., T. Kühn, and G. Szepannek (2014). "On Class Imbalance
+Correction for Classification Algorithms in Credit Scoring". In:
+_Operations Research Proceedings_. Ed. by M. Löbbecke, A. Koster,
+L. P., M. R., P. B. and G. Walther. , pp. 37-43.
+
+FICO (2019). _xML Challenge_. Online. URL:
+[https://community.fico.com/s/explainable-machine-learning-challenge](https://community.fico.com/s/explainable-machine-learning-challenge).
+
+---
+
+# References (2/3)
+
+Harrell Jr, F. E. (2019). _rms: Regression Modeling Strategies_. R
+package version 5.1-3.1. URL:
+[https://CRAN.R-project.org/package=rms](https://CRAN.R-project.org/package=rms).
+
+Lessmann, S, B. Baesens, H. Seow, and L. Thomas (2015).
+"Benchmarking state-of-the-art classification algorithms for
+credit scoring: An update of research". In: _European Journal of
+Operational Research_ 247.1, pp. 124-136.
+
+Molnar, C. (2019). _Interpretable Machine Learning. A Guide for
+Making Black Box Models Explainable_. &lt;URL:
+https://christophm.github.io/interpretable-ml-book/&gt;.
+
+Molnar, C, B. Bischl, and G. Casalicchio (2018). "iml: An R
+package for Interpretable Machine Learning". In: _Journal Of
+Statistical Software_ 3.26, p. 786. URL:
+[http://joss.theoj.org/papers/10.21105/joss.00786](http://joss.theoj.org/papers/10.21105/joss.00786).
+
+---
+
+# References (3/3)
+
+Szepannek, G. (2017b). _A Framework for Scorecard Modelling using
+R_. CSCC 2017.
+
+Szepannek, G. (2017a). "On the Practical Relevance of Modern
+Machine Learning Algorithms for Credit Scoring Applications". In:
+_WIAS Report Series_ 29, pp. 88-96.
+
+---
+
+# Thank you!
+
+&lt;br&gt; 
+
+
+.smaller-font[
+.pull-left[
+#### Prof. Dr. Michael Bücker  
+Professor of Data Science  
+Münster School of Business  
+
+FH Münster - University of Applied Sciences -  
+Corrensstraße 25, Room C521  
+D-48149 Münster  
+
+Tel: +49 251 83 65615  
+E-Mail: michael.buecker@fh-muenster.de  
+https://en.fh-muenster.de/wirtschaft/index.php
+]
+
+.pull-right[
+&lt;a&gt;
+&lt;div align = "center"&gt;
+&lt;img src="img/fh.jpg" width=100%&gt;
+&lt;/div&gt;
+&lt;/a&gt;
+]
+]
+
+---
+
+class: inverse
+# Backup
+
+
+---
+class: empty
+background-image: url("https://media.giphy.com/media/lqVVqkqMolh9S/giphy.gif")
+background-size: contain
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"countIncrementalSlides": false,
+"highlightLines": true,
+"highlightStyle": "github",
+"navigation": "click = TRUE",
+"ratio": "16:9",
+"slideNumberFormat": "%current%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("End Jax",function () {
+  return MathJax.Hub.setRenderer("SVG");
+});
+</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

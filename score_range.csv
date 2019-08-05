@@ -1,0 +1,15 @@
+﻿Model,min,max,range
+NoValid_MSinceMostRecentInqexcl7days,-11,30,41
+PercentInstallTrades,-29,4,33
+PercentTradesNeverDelq,-24,5,29
+NumRevolvingTradesWBalance,-25,4,29
+ExternalRiskEstimate,-11,14,25
+MSinceMostRecentInqexcl7days,-3,21,24
+NumSatisfactoryTrades,-16,7,23
+AverageMInFile,-13,8,21
+NetFractionRevolvingBurden,-13,8,21
+NumInqLast6M,-13,2,15
+MSinceOldestTradeOpen,-9,5,14
+MSinceMostRecentDelq,-8,3,11
+NumBank2NatlTradesWHighUtilization,-5,4,9
+MaxDelq2PublicRecLast12M,-6,2,8

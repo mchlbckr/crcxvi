@@ -1,0 +1,98 @@
+% Encoding: UTF-8
+
+@Article{sze2017ont,
+  author  = {Szepannek, Gero},
+  title   = {On the Practical Relevance of Modern Machine Learning Algorithms for Credit Scoring Applications},
+  journal = {WIAS Report Series},
+  year    = {2017},
+  volume  = {29},
+  pages   = {88-96},
+  month   = {02},
+}
+
+@Article{les15ben,
+  author  = {Lessmann, Stefan and Baesens, Bart and Seow, Hsin-Vonn and Thomas, Lyn},
+  title   = {Benchmarking state-of-the-art classification algorithms for credit scoring: An update of research},
+  journal = {European Journal of Operational Research},
+  year    = {2015},
+  volume  = {247},
+  number  = {1},
+  pages   = {124-136},
+  month   = {05},
+}
+
+@InProceedings{bis2014onc,
+  author    = {Bischl, Bernd and K{\"u}hn, Tobias and Szepannek, Gero},
+  title     = {On Class Imbalance Correction for Classification Algorithms in Credit Scoring},
+  booktitle = {Operations Research Proceedings},
+  year      = {2014},
+  editor    = {Löbbecke, M. and Koster, A. and Letmathe P. and Madlenerm R. and Peis B. and Walther, G.},
+  pages     = {37-43},
+}
+
+@Article{bie2018dal,
+  author     = {Przemyslaw Biecek},
+  title      = {DALEX: explainers for complex predictive models},
+  journal    = {Journal of Machine Learning Research},
+  year       = {2018},
+  volume     = {19},
+  number     = {84},
+  pages      = {1-5},
+  abstract   = {Predictive modeling is invaded by elastic, yet complex methods such as neural networks or ensembles (model stacking, boosting or bagging). Such methods are usually described by a large number of parameters or hyper parameters - a price that one needs to pay for elasticity. The very number of parameters makes models hard to understand. This paper describes a consistent collection of explainers for predictive models, a.k.a. black boxes. Each explainer is a technique for exploration of a black box model. Presented approaches are model-agnostic, what means that they extract useful information from any predictive method despite its internal structure. Each explainer is linked with a specific aspect of a model. Some are useful in decomposing predictions, some serve better in understanding performance, while others are useful in understanding importance and conditional responses of a particular variable. Every explainer presented in this paper works for a single model or for a collection of models. In the latter case, models can be compared against each other. Such comparison helps to find strengths and weaknesses of different approaches and gives additional possibilities for model validation. Presented explainers are implemented in the DALEX package for R. They are based on a uniform standardized grammar of model exploration which may be easily extended. The current implementation supports the most popular frameworks for classification and regression.},
+  file       = {:http\://arxiv.org/pdf/1806.08915v2:PDF},
+  keywords   = {stat.ML, cs.AI, cs.LG, stat.AP},
+}
+
+@Misc{fic2018xml,
+  author       = {FICO},
+  title        = {xML Challenge},
+  howpublished = {Online},
+  year         = {2019},
+  url          = {https://community.fico.com/s/explainable-machine-learning-challenge},
+}
+
+@Manual{rms2019reg,
+  title  = {rms: Regression Modeling Strategies},
+  author = {Frank E {Harrell Jr}},
+  year   = {2019},
+  note   = {R package version 5.1-3.1},
+  url    = {https://CRAN.R-project.org/package=rms},
+}
+
+@Manual{bie2019mod,
+  title  = {modelDown: Make Static HTML Website for Predictive Models},
+  author = {Przemysław Biecek and Magda Tatarynowicz and Kamil Romaszko and Mateusz Urbański},
+  year   = {2019},
+  note   = {R package version 1.0.1},
+  url    = {https://CRAN.R-project.org/package=modelDown},
+}
+
+@Book{mol2019int,
+  title    = {Interpretable Machine Learning},
+  year     = {2019},
+  author   = {Christoph Molnar},
+  note     = {\url{https://christophm.github.io/interpretable-ml-book/}},
+  subtitle = {A Guide for Making Black Box Models Explainable},
+}
+
+@Article{mol2018iml,
+  author    = {Christoph Molnar and Bernd Bischl and Giuseppe Casalicchio},
+  title     = {iml: An R package for Interpretable Machine Learning},
+  journal   = {Journal Of Statistical Software},
+  year      = {2018},
+  volume    = {3},
+  number    = {26},
+  pages     = {786},
+  publisher = {Journal of Open Source Software},
+  url       = {http://joss.theoj.org/papers/10.21105/joss.00786},
+}
+
+@TechReport{sze2017afr,
+  author       = {Gero Szepannek},
+  title        = {A Framework for Scorecard Modelling using R},
+  institution  = {C},
+  year         = {2017},
+  organization = {CSCC},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
