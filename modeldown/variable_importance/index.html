@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="../mi2template.css">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script>
+    function makeHelpPanel(help_link, docs_link) {
+      return '\
+            <div class="help-panel">\
+              <div class="title"><i class="fa fa-question" aria-hidden="true"></i> Helpful resources</div>\
+              <a href="' + docs_link + '" target="_blank">Technical documentation</a>\
+              <a href="' + help_link + '" target="_blank">Business description</a>\
+            </div>\
+            ';
+    };
+
+    function renderHelpPanels() {
+      var panel = document.getElementsByTagName("help-panel")[0];
+
+      while(panel) {
+        var docs_url = panel.attributes["docs-url"].value; 
+        var help_url = panel.attributes["help-url"].value;
+        
+        var html = makeHelpPanel(help_url, docs_url);
+        panel.outerHTML = html;
+
+        panel = document.getElementsByTagName("help-panel")[0]; 
+        // Not iterating the result because it changes after each iteration
+      }
+    }
+
+    $(document).ready(function(){
+      renderHelpPanels();
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="container template-home">
+
+    <header>
+      <div class="navbar navbar-default navbar-fixed-top navbar-mi2" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            </a>
+            <a class="navbar-brand navbar-mi2" href="../index.html">modelDown</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-mi2 nav navbar-nav">
+              <li>
+                <a href="../index.html">
+                  <span class="fa fa-home fa-lg"></span>
+
+                </a>
+              </li>
+
+              <li>
+                  <a href="../model_performance/index.html">Model Performance</a>
+              </li>
+              <li>
+                  <a href="../variable_importance/index.html">Variable Importance</a>
+              </li>
+              <li>
+                  <a href="../variable_response/index.html">Variable Response</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right"></ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+        <!--/.container -->
+      </div>
+      <!--/.navbar -->
+    </header>
+
+    <div class="row" style="position: relative; margin-bottom:60px;">
+      <div class="text-center">
+    <div class="data-container">
+      <h2>Feature Importance</h2>
+      <img class="plot" src="img/variable_importance.png" />
+      <br />
+      <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-2-featureImportance.html#featureImportance" docs-url="https://pbiecek.github.io/DALEX/reference/variable_importance.html"></help-panel>
+      <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;d0c4df572ef6b9dc993e8410cb894608&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="data-container">
+      <br>
+      <table class="table table-responsive table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> variable </th>
+   <th style="text-align:right;"> dropout_loss </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="37"><td colspan="2" style="border-bottom: 1px solid;"><strong>RMS 13vars</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> _full_model_ </td>
+   <td style="text-align:right;"> 0.2296592 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTrades90Ever2DerogPubRec </td>
+   <td style="text-align:right;"> 0.2288443 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NetFractionRevolvingBurden </td>
+   <td style="text-align:right;"> 0.2290966 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_MSinceOldestTradeOpen </td>
+   <td style="text-align:right;"> 0.2293108 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceOldestTradeOpen </td>
+   <td style="text-align:right;"> 0.2296231 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NetFractionInstallBurden </td>
+   <td style="text-align:right;"> 0.2296412 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> RiskPerformance </td>
+   <td style="text-align:right;"> 0.2296592 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 0.2298674 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> No_MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 0.2300656 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTotalTrades </td>
+   <td style="text-align:right;"> 0.2301136 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NumRevolvingTradesWBalance </td>
+   <td style="text-align:right;"> 0.2302678 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NumInstallTradesWBalance </td>
+   <td style="text-align:right;"> 0.2304500 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTrades60Ever2DerogPubRec </td>
+   <td style="text-align:right;"> 0.2304960 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceMostRecentTradeOpen </td>
+   <td style="text-align:right;"> 0.2306782 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumInstallTradesWBalance </td>
+   <td style="text-align:right;"> 0.2307863 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NumBank2NatlTradesWHighUtilization </td>
+   <td style="text-align:right;"> 0.2308103 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> PercentTradesWBalance </td>
+   <td style="text-align:right;"> 0.2309125 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 0.2311267 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NetFractionInstallBurden </td>
+   <td style="text-align:right;"> 0.2316973 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTradesOpeninLast12M </td>
+   <td style="text-align:right;"> 0.2321237 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoBureau </td>
+   <td style="text-align:right;"> 0.2326402 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> PercentInstallTrades </td>
+   <td style="text-align:right;"> 0.2328584 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 0.2330707 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumBank2NatlTradesWHighUtilization </td>
+   <td style="text-align:right;"> 0.2347304 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumRevolvingTradesWBalance </td>
+   <td style="text-align:right;"> 0.2374351 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NetFractionRevolvingBurden </td>
+   <td style="text-align:right;"> 0.2393731 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 0.2396414 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MaxDelq2PublicRecLast12M </td>
+   <td style="text-align:right;"> 0.2400939 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> No_MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 0.2413652 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> AverageMInFile </td>
+   <td style="text-align:right;"> 0.2417876 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> PercentTradesNeverDelq </td>
+   <td style="text-align:right;"> 0.2463823 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> ExternalRiskEstimate </td>
+   <td style="text-align:right;"> 0.2476396 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumInqLast6Mexcl7days </td>
+   <td style="text-align:right;"> 0.2491631 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumSatisfactoryTrades </td>
+   <td style="text-align:right;"> 0.2508349 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MaxDelqEver </td>
+   <td style="text-align:right;"> 0.2515316 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumInqLast6M </td>
+   <td style="text-align:right;"> 0.2782569 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> _baseline_ </td>
+   <td style="text-align:right;"> 0.5071553 </td>
+  </tr>
+  <tr grouplength="37"><td colspan="2" style="border-bottom: 1px solid;"><strong>GBM 10000</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> _full_model_ </td>
+   <td style="text-align:right;"> 0.2658122 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NumBank2NatlTradesWHighUtilization </td>
+   <td style="text-align:right;"> 0.2637000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 0.2638242 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> PercentInstallTrades </td>
+   <td style="text-align:right;"> 0.2650754 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 0.2651075 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MaxDelqEver </td>
+   <td style="text-align:right;"> 0.2651495 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumBank2NatlTradesWHighUtilization </td>
+   <td style="text-align:right;"> 0.2652496 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_MSinceOldestTradeOpen </td>
+   <td style="text-align:right;"> 0.2655039 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> RiskPerformance </td>
+   <td style="text-align:right;"> 0.2658122 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NetFractionRevolvingBurden </td>
+   <td style="text-align:right;"> 0.2658122 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NumRevolvingTradesWBalance </td>
+   <td style="text-align:right;"> 0.2658122 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTrades90Ever2DerogPubRec </td>
+   <td style="text-align:right;"> 0.2660865 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> No_MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 0.2661585 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NetFractionInstallBurden </td>
+   <td style="text-align:right;"> 0.2664148 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NumInstallTradesWBalance </td>
+   <td style="text-align:right;"> 0.2668072 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTrades60Ever2DerogPubRec </td>
+   <td style="text-align:right;"> 0.2672657 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> No_MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 0.2684849 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTradesOpeninLast12M </td>
+   <td style="text-align:right;"> 0.2690175 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceMostRecentTradeOpen </td>
+   <td style="text-align:right;"> 0.2692257 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceOldestTradeOpen </td>
+   <td style="text-align:right;"> 0.2694239 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 0.2709414 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumInqLast6Mexcl7days </td>
+   <td style="text-align:right;"> 0.2725271 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> PercentTradesWBalance </td>
+   <td style="text-align:right;"> 0.2726352 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTotalTrades </td>
+   <td style="text-align:right;"> 0.2728694 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NetFractionInstallBurden </td>
+   <td style="text-align:right;"> 0.2742248 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoBureau </td>
+   <td style="text-align:right;"> 0.2750877 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumInstallTradesWBalance </td>
+   <td style="text-align:right;"> 0.2751518 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MaxDelq2PublicRecLast12M </td>
+   <td style="text-align:right;"> 0.2756102 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 0.2770917 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumRevolvingTradesWBalance </td>
+   <td style="text-align:right;"> 0.2783050 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> ExternalRiskEstimate </td>
+   <td style="text-align:right;"> 0.2802049 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> PercentTradesNeverDelq </td>
+   <td style="text-align:right;"> 0.2806474 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> AverageMInFile </td>
+   <td style="text-align:right;"> 0.2815924 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumInqLast6M </td>
+   <td style="text-align:right;"> 0.2836545 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumSatisfactoryTrades </td>
+   <td style="text-align:right;"> 0.2914845 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NetFractionRevolvingBurden </td>
+   <td style="text-align:right;"> 0.2943774 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> _baseline_ </td>
+   <td style="text-align:right;"> 0.5020341 </td>
+  </tr>
+  <tr grouplength="37"><td colspan="2" style="border-bottom: 1px solid;"><strong>Score Card</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> _full_model_ </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 0.2391849 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> RiskPerformance </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceMostRecentTradeOpen </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTrades60Ever2DerogPubRec </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTrades90Ever2DerogPubRec </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MaxDelqEver </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTotalTrades </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumTradesOpeninLast12M </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumInqLast6Mexcl7days </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NetFractionInstallBurden </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumInstallTradesWBalance </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> PercentTradesWBalance </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoBureau </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_MSinceOldestTradeOpen </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> No_MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> No_MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NetFractionRevolvingBurden </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NetFractionInstallBurden </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NumRevolvingTradesWBalance </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NumInstallTradesWBalance </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_NumBank2NatlTradesWHighUtilization </td>
+   <td style="text-align:right;"> 0.2422701 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 0.2425904 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> PercentInstallTrades </td>
+   <td style="text-align:right;"> 0.2433112 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MSinceOldestTradeOpen </td>
+   <td style="text-align:right;"> 0.2440960 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> MaxDelq2PublicRecLast12M </td>
+   <td style="text-align:right;"> 0.2441620 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumInqLast6M </td>
+   <td style="text-align:right;"> 0.2449468 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumBank2NatlTradesWHighUtilization </td>
+   <td style="text-align:right;"> 0.2455575 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumRevolvingTradesWBalance </td>
+   <td style="text-align:right;"> 0.2467327 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> AverageMInFile </td>
+   <td style="text-align:right;"> 0.2468428 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NetFractionRevolvingBurden </td>
+   <td style="text-align:right;"> 0.2478478 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> PercentTradesNeverDelq </td>
+   <td style="text-align:right;"> 0.2485765 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NoValid_MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 0.2510451 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> NumSatisfactoryTrades </td>
+   <td style="text-align:right;"> 0.2564726 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> ExternalRiskEstimate </td>
+   <td style="text-align:right;"> 0.2603466 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> _baseline_ </td>
+   <td style="text-align:right;"> 0.5046047 </td>
+  </tr>
+</tbody>
+</table>
+    </div>
+</div>
+    </div>
+
+
+  <footer>
+    <div class="footer">
+      <div class="text-center">Site built with <a href="https://github.com/MI2DataLab/modelDown">modelDown</a>.</div>
+      <div class="text-center" style="margin: 0px 0px 5px;">Last updated: 2019-07-08 13:19:11 (session_info: <a href="session_info/session_info.txt">.txt</a>, <a href="session_info/session_info.rda">.rda</a>)</div>
+    </div>
+  </footer>
+
+  </div>
+
+</body>
+</html>

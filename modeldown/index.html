@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="./mi2template.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script>
+    function makeHelpPanel(help_link, docs_link) {
+      return '\
+            <div class="help-panel">\
+              <div class="title"><i class="fa fa-question" aria-hidden="true"></i> Helpful resources</div>\
+              <a href="' + docs_link + '" target="_blank">Technical documentation</a>\
+              <a href="' + help_link + '" target="_blank">Business description</a>\
+            </div>\
+            ';
+    };
+
+    function renderHelpPanels() {
+      var panel = document.getElementsByTagName("help-panel")[0];
+
+      while(panel) {
+        var docs_url = panel.attributes["docs-url"].value; 
+        var help_url = panel.attributes["help-url"].value;
+        
+        var html = makeHelpPanel(help_url, docs_url);
+        panel.outerHTML = html;
+
+        panel = document.getElementsByTagName("help-panel")[0]; 
+        // Not iterating the result because it changes after each iteration
+      }
+    }
+
+    $(document).ready(function(){
+      renderHelpPanels();
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="container template-home">
+
+    <header>
+      <div class="navbar navbar-default navbar-fixed-top navbar-mi2" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            </a>
+            <a class="navbar-brand navbar-mi2" href="./index.html">modelDown</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-mi2 nav navbar-nav">
+              <li>
+                <a href="./index.html">
+                  <span class="fa fa-home fa-lg"></span>
+
+                </a>
+              </li>
+
+              <li>
+                  <a href="./model_performance/index.html">Model Performance</a>
+              </li>
+              <li>
+                  <a href="./variable_importance/index.html">Variable Importance</a>
+              </li>
+              <li>
+                  <a href="./variable_response/index.html">Variable Response</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right"></ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+        <!--/.container -->
+      </div>
+      <!--/.navbar -->
+    </header>
+
+    <div class="row" style="position: relative; margin-bottom:60px;">
+      <header class="intro-header">
+  <div class="container text-center">
+    <h1>modelDown</h1>
+    <p class="lead">Explore your model!</p>
+  </div>
+</header>
+
+
+<br>
+<br>
+
+<div class="row">
+  <div class="col-md-8">
+    <h3 class="my-3">Basic data information</h3>
+    <ul>
+      <li>2615 observations</li>
+      <li>35 columns</li>
+    </ul>
+  </div>
+  <div class="col-md-4" >
+    <h3 class="my-3">Explainers</h3>
+      <ul><li>RMS 13vars <a href='explainers/RMS 13vars.rda'>(download)</a></li><li>GBM 10000 <a href='explainers/GBM 10000.rda'>(download)</a></li><li>Score Card <a href='explainers/Score Card.rda'>(download)</a></li></ul>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="text-center">
+  <h3 class="my-3">Summaries for numerical variables</h3>
+  <br>
+  <table class="table table-responsive table-bordered table-hover" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> vars </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> mean </th>
+   <th style="text-align:right;"> sd </th>
+   <th style="text-align:right;"> median </th>
+   <th style="text-align:right;"> trimmed </th>
+   <th style="text-align:right;"> mad </th>
+   <th style="text-align:right;"> min </th>
+   <th style="text-align:right;"> max </th>
+   <th style="text-align:right;"> range </th>
+   <th style="text-align:right;"> skew </th>
+   <th style="text-align:right;"> kurtosis </th>
+   <th style="text-align:right;"> se </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> ExternalRiskEstimate </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 71.9092881 </td>
+   <td style="text-align:right;"> 9.5927082 </td>
+   <td style="text-align:right;"> 72.000000 </td>
+   <td style="text-align:right;"> 71.8675530 </td>
+   <td style="text-align:right;"> 10.378200 </td>
+   <td style="text-align:right;"> 34 </td>
+   <td style="text-align:right;"> 93 </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 0.0125285 </td>
+   <td style="text-align:right;"> -0.6181202 </td>
+   <td style="text-align:right;"> 0.1875881 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> MSinceOldestTradeOpen </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 199.5595834 </td>
+   <td style="text-align:right;"> 94.4760162 </td>
+   <td style="text-align:right;"> 191.000000 </td>
+   <td style="text-align:right;"> 193.3584857 </td>
+   <td style="text-align:right;"> 80.060400 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 803 </td>
+   <td style="text-align:right;"> 799 </td>
+   <td style="text-align:right;"> 0.7464212 </td>
+   <td style="text-align:right;"> 1.0654388 </td>
+   <td style="text-align:right;"> 1.8475054 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> MSinceMostRecentTradeOpen </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 9.4748154 </td>
+   <td style="text-align:right;"> 11.2305005 </td>
+   <td style="text-align:right;"> 6.000000 </td>
+   <td style="text-align:right;"> 7.3457440 </td>
+   <td style="text-align:right;"> 5.381037 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 152 </td>
+   <td style="text-align:right;"> 152 </td>
+   <td style="text-align:right;"> 4.2769316 </td>
+   <td style="text-align:right;"> 30.4049912 </td>
+   <td style="text-align:right;"> 0.2196156 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AverageMInFile </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 77.7883061 </td>
+   <td style="text-align:right;"> 32.6565635 </td>
+   <td style="text-align:right;"> 78.000000 </td>
+   <td style="text-align:right;"> 76.1478359 </td>
+   <td style="text-align:right;"> 28.169400 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 258 </td>
+   <td style="text-align:right;"> 254 </td>
+   <td style="text-align:right;"> 0.7339520 </td>
+   <td style="text-align:right;"> 1.7324106 </td>
+   <td style="text-align:right;"> 0.6386084 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumSatisfactoryTrades </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 20.7985654 </td>
+   <td style="text-align:right;"> 10.9116056 </td>
+   <td style="text-align:right;"> 20.000000 </td>
+   <td style="text-align:right;"> 19.9513849 </td>
+   <td style="text-align:right;"> 10.378200 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 74 </td>
+   <td style="text-align:right;"> 74 </td>
+   <td style="text-align:right;"> 0.8539002 </td>
+   <td style="text-align:right;"> 1.1746754 </td>
+   <td style="text-align:right;"> 0.2133796 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumTrades60Ever2DerogPubRec </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 0.5624119 </td>
+   <td style="text-align:right;"> 1.1432723 </td>
+   <td style="text-align:right;"> 0.000000 </td>
+   <td style="text-align:right;"> 0.3046856 </td>
+   <td style="text-align:right;"> 0.000000 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 4.1542031 </td>
+   <td style="text-align:right;"> 28.8173477 </td>
+   <td style="text-align:right;"> 0.0223570 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumTrades90Ever2DerogPubRec </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 0.3717331 </td>
+   <td style="text-align:right;"> 0.9262157 </td>
+   <td style="text-align:right;"> 0.000000 </td>
+   <td style="text-align:right;"> 0.1629633 </td>
+   <td style="text-align:right;"> 0.000000 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 5.3707032 </td>
+   <td style="text-align:right;"> 50.6899656 </td>
+   <td style="text-align:right;"> 0.0181124 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> PercentTradesNeverDelq </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 92.4449035 </td>
+   <td style="text-align:right;"> 11.1790055 </td>
+   <td style="text-align:right;"> 96.000000 </td>
+   <td style="text-align:right;"> 94.8210333 </td>
+   <td style="text-align:right;"> 5.930400 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> -2.5533596 </td>
+   <td style="text-align:right;"> 9.3644706 </td>
+   <td style="text-align:right;"> 0.2186086 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> MSinceMostRecentDelq </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 21.9519624 </td>
+   <td style="text-align:right;"> 14.7526867 </td>
+   <td style="text-align:right;"> 21.801167 </td>
+   <td style="text-align:right;"> 20.0202493 </td>
+   <td style="text-align:right;"> 0.000000 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 83 </td>
+   <td style="text-align:right;"> 83 </td>
+   <td style="text-align:right;"> 1.5020094 </td>
+   <td style="text-align:right;"> 3.1984567 </td>
+   <td style="text-align:right;"> 0.2884930 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> MaxDelq2PublicRecLast12M </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 5.7228883 </td>
+   <td style="text-align:right;"> 1.6308052 </td>
+   <td style="text-align:right;"> 6.000000 </td>
+   <td style="text-align:right;"> 6.0140243 </td>
+   <td style="text-align:right;"> 1.482600 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> -1.7827782 </td>
+   <td style="text-align:right;"> 3.2507477 </td>
+   <td style="text-align:right;"> 0.0318909 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> MaxDelqEver </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 6.3766061 </td>
+   <td style="text-align:right;"> 1.7883654 </td>
+   <td style="text-align:right;"> 6.373784 </td>
+   <td style="text-align:right;"> 6.6778905 </td>
+   <td style="text-align:right;"> 2.411028 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> -0.9993204 </td>
+   <td style="text-align:right;"> 0.2575777 </td>
+   <td style="text-align:right;"> 0.0349720 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumTotalTrades </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 22.3661529 </td>
+   <td style="text-align:right;"> 12.4068479 </td>
+   <td style="text-align:right;"> 22.000000 </td>
+   <td style="text-align:right;"> 21.3776826 </td>
+   <td style="text-align:right;"> 10.378200 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 85 </td>
+   <td style="text-align:right;"> 85 </td>
+   <td style="text-align:right;"> 0.9360379 </td>
+   <td style="text-align:right;"> 1.5613149 </td>
+   <td style="text-align:right;"> 0.2426194 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumTradesOpeninLast12M </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 1.8501357 </td>
+   <td style="text-align:right;"> 1.7606109 </td>
+   <td style="text-align:right;"> 1.868784 </td>
+   <td style="text-align:right;"> 1.6044457 </td>
+   <td style="text-align:right;"> 1.677141 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 1.4682963 </td>
+   <td style="text-align:right;"> 3.3689572 </td>
+   <td style="text-align:right;"> 0.0344292 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> PercentInstallTrades </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 34.9464925 </td>
+   <td style="text-align:right;"> 17.4391985 </td>
+   <td style="text-align:right;"> 34.000000 </td>
+   <td style="text-align:right;"> 33.9971705 </td>
+   <td style="text-align:right;"> 16.308600 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 0.6301908 </td>
+   <td style="text-align:right;"> 0.7699160 </td>
+   <td style="text-align:right;"> 0.3410285 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> MSinceMostRecentInqexcl7days </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 2.5181713 </td>
+   <td style="text-align:right;"> 4.1833112 </td>
+   <td style="text-align:right;"> 1.000000 </td>
+   <td style="text-align:right;"> 1.4878251 </td>
+   <td style="text-align:right;"> 1.482600 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 2.8522168 </td>
+   <td style="text-align:right;"> 8.6840411 </td>
+   <td style="text-align:right;"> 0.0818058 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumInqLast6M </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 1.4455836 </td>
+   <td style="text-align:right;"> 2.2594052 </td>
+   <td style="text-align:right;"> 1.000000 </td>
+   <td style="text-align:right;"> 1.0760636 </td>
+   <td style="text-align:right;"> 1.482600 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 10.8783997 </td>
+   <td style="text-align:right;"> 265.8104839 </td>
+   <td style="text-align:right;"> 0.0441833 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumInqLast6Mexcl7days </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 1.3895145 </td>
+   <td style="text-align:right;"> 2.2270914 </td>
+   <td style="text-align:right;"> 1.000000 </td>
+   <td style="text-align:right;"> 1.0232110 </td>
+   <td style="text-align:right;"> 1.482600 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 11.3037594 </td>
+   <td style="text-align:right;"> 282.2965923 </td>
+   <td style="text-align:right;"> 0.0435514 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NetFractionRevolvingBurden </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 34.9500204 </td>
+   <td style="text-align:right;"> 28.0053581 </td>
+   <td style="text-align:right;"> 33.000000 </td>
+   <td style="text-align:right;"> 32.3885826 </td>
+   <td style="text-align:right;"> 32.617200 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 232 </td>
+   <td style="text-align:right;"> 232 </td>
+   <td style="text-align:right;"> 0.7220326 </td>
+   <td style="text-align:right;"> 0.2859047 </td>
+   <td style="text-align:right;"> 0.5476528 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NetFractionInstallBurden </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 68.3909388 </td>
+   <td style="text-align:right;"> 18.6827023 </td>
+   <td style="text-align:right;"> 68.638180 </td>
+   <td style="text-align:right;"> 70.0584353 </td>
+   <td style="text-align:right;"> 9.432035 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 152 </td>
+   <td style="text-align:right;"> 150 </td>
+   <td style="text-align:right;"> -0.9616484 </td>
+   <td style="text-align:right;"> 1.9527572 </td>
+   <td style="text-align:right;"> 0.3653456 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumRevolvingTradesWBalance </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 4.0883127 </td>
+   <td style="text-align:right;"> 2.8884345 </td>
+   <td style="text-align:right;"> 4.000000 </td>
+   <td style="text-align:right;"> 3.7123448 </td>
+   <td style="text-align:right;"> 2.965200 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 1.8277775 </td>
+   <td style="text-align:right;"> 6.9878653 </td>
+   <td style="text-align:right;"> 0.0564842 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumInstallTradesWBalance </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 2.4933867 </td>
+   <td style="text-align:right;"> 1.5356341 </td>
+   <td style="text-align:right;"> 2.000000 </td>
+   <td style="text-align:right;"> 2.2667015 </td>
+   <td style="text-align:right;"> 1.482600 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 2.8850707 </td>
+   <td style="text-align:right;"> 19.0005329 </td>
+   <td style="text-align:right;"> 0.0300298 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> NumBank2NatlTradesWHighUtilization </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 1.0771227 </td>
+   <td style="text-align:right;"> 1.4088286 </td>
+   <td style="text-align:right;"> 1.000000 </td>
+   <td style="text-align:right;"> 0.8068208 </td>
+   <td style="text-align:right;"> 1.482600 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 2.4383570 </td>
+   <td style="text-align:right;"> 9.0384766 </td>
+   <td style="text-align:right;"> 0.0275500 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> PercentTradesWBalance </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 2615 </td>
+   <td style="text-align:right;"> 67.1295823 </td>
+   <td style="text-align:right;"> 21.3929555 </td>
+   <td style="text-align:right;"> 67.000000 </td>
+   <td style="text-align:right;"> 67.9793874 </td>
+   <td style="text-align:right;"> 23.721600 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> -0.3145631 </td>
+   <td style="text-align:right;"> -0.3683344 </td>
+   <td style="text-align:right;"> 0.4183453 </td>
+  </tr>
+</tbody>
+</table>
+  <hr>
+    <h3 class="my-3">Summaries for categorical variables</h3>
+    <br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> RiskPerformance </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Bad </td>
+   <td style="text-align:right;"> 1369 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Good </td>
+   <td style="text-align:right;"> 1246 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NoBureau </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 2471 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 144 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NoValid_MSinceOldestTradeOpen </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 2562 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 53 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NoValid_MSinceMostRecentDelq </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 2570 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 45 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> No_MSinceMostRecentDelq </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 1448 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 1167 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NoValid_MSinceMostRecentInqexcl7days </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 2517 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 98 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> No_MSinceMostRecentInqexcl7days </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 2149 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 466 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NoValid_NetFractionRevolvingBurden </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 2568 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 47 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NoValid_NetFractionInstallBurden </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 1740 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 875 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NoValid_NumRevolvingTradesWBalance </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 2573 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NoValid_NumInstallTradesWBalance </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 2393 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 222 </td>
+  </tr>
+</tbody>
+</table><br><table class="table table-responsive table-bordered table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> NoValid_NumBank2NatlTradesWHighUtilization </th>
+   <th style="text-align:right;"> Frequency </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:right;"> 2467 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 148 </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<br>
+<br>
+    </div>
+
+
+  <footer>
+    <div class="footer">
+      <div class="text-center">Site built with <a href="https://github.com/MI2DataLab/modelDown">modelDown</a>.</div>
+      <div class="text-center" style="margin: 0px 0px 5px;">Last updated: 2019-07-08 13:19:11 (session_info: <a href="session_info/session_info.txt">.txt</a>, <a href="session_info/session_info.rda">.rda</a>)</div>
+    </div>
+  </footer>
+
+  </div>
+
+</body>
+</html>

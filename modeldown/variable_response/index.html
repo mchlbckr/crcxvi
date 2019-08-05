@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="../mi2template.css">
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script>
+    function makeHelpPanel(help_link, docs_link) {
+      return '\
+            <div class="help-panel">\
+              <div class="title"><i class="fa fa-question" aria-hidden="true"></i> Helpful resources</div>\
+              <a href="' + docs_link + '" target="_blank">Technical documentation</a>\
+              <a href="' + help_link + '" target="_blank">Business description</a>\
+            </div>\
+            ';
+    };
+
+    function renderHelpPanels() {
+      var panel = document.getElementsByTagName("help-panel")[0];
+
+      while(panel) {
+        var docs_url = panel.attributes["docs-url"].value; 
+        var help_url = panel.attributes["help-url"].value;
+        
+        var html = makeHelpPanel(help_url, docs_url);
+        panel.outerHTML = html;
+
+        panel = document.getElementsByTagName("help-panel")[0]; 
+        // Not iterating the result because it changes after each iteration
+      }
+    }
+
+    $(document).ready(function(){
+      renderHelpPanels();
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="container template-home">
+
+    <header>
+      <div class="navbar navbar-default navbar-fixed-top navbar-mi2" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            </a>
+            <a class="navbar-brand navbar-mi2" href="../index.html">modelDown</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-mi2 nav navbar-nav">
+              <li>
+                <a href="../index.html">
+                  <span class="fa fa-home fa-lg"></span>
+
+                </a>
+              </li>
+
+              <li>
+                  <a href="../model_performance/index.html">Model Performance</a>
+              </li>
+              <li>
+                  <a href="../variable_importance/index.html">Variable Importance</a>
+              </li>
+              <li>
+                  <a href="../variable_response/index.html">Variable Response</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right"></ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+        <!--/.container -->
+      </div>
+      <!--/.navbar -->
+    </header>
+
+    <div class="row" style="position: relative; margin-bottom:60px;">
+      <div class="variable-selector-panel">
+    <b>Features</b>
+    <div class="panel panel-default">
+        <ul class="list-group">
+            <li class="list-group-item variable-link">
+                <a href="#NumInqLast6M">NumInqLast6M</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#MaxDelqEver">MaxDelqEver</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NumSatisfactoryTrades">NumSatisfactoryTrades</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NumInqLast6Mexcl7days">NumInqLast6Mexcl7days</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#PercentTradesNeverDelq">PercentTradesNeverDelq</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#AverageMInFile">AverageMInFile</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#MaxDelq2PublicRecLast12M">MaxDelq2PublicRecLast12M</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#MSinceMostRecentInqexcl7days">MSinceMostRecentInqexcl7days</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NetFractionRevolvingBurden">NetFractionRevolvingBurden</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NumRevolvingTradesWBalance">NumRevolvingTradesWBalance</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#PercentInstallTrades">PercentInstallTrades</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NumTradesOpeninLast12M">NumTradesOpeninLast12M</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NetFractionInstallBurden">NetFractionInstallBurden</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#MSinceMostRecentDelq">MSinceMostRecentDelq</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#PercentTradesWBalance">PercentTradesWBalance</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NumInstallTradesWBalance">NumInstallTradesWBalance</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#MSinceMostRecentTradeOpen">MSinceMostRecentTradeOpen</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NumTrades60Ever2DerogPubRec">NumTrades60Ever2DerogPubRec</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NumTotalTrades">NumTotalTrades</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#MSinceOldestTradeOpen">MSinceOldestTradeOpen</a>
+            </li>
+            <li class="list-group-item variable-link">
+                <a href="#NumTrades90Ever2DerogPubRec">NumTrades90Ever2DerogPubRec</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="col-md-push-3 col-md-9 main-content contents">
+    <div class="plot-container">
+        <h2 id="NumInqLast6M" class="hasAnchor">
+            <a href="#NumInqLast6M" class="anchor"></a>
+            Feature: NumInqLast6M
+        </h2>
+        <img class="plot" src="img/variable_response_NumInqLast6M_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;e712f92f297a63970105aecb116c7611&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="MaxDelqEver" class="hasAnchor">
+            <a href="#MaxDelqEver" class="anchor"></a>
+            Feature: MaxDelqEver
+        </h2>
+        <img class="plot" src="img/variable_response_MaxDelqEver_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;0b7b2160121653e1b03f5674b1c07bfa&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NumSatisfactoryTrades" class="hasAnchor">
+            <a href="#NumSatisfactoryTrades" class="anchor"></a>
+            Feature: NumSatisfactoryTrades
+        </h2>
+        <img class="plot" src="img/variable_response_NumSatisfactoryTrades_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;e0b9cfbffe6482de3e78217225df6042&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NumInqLast6Mexcl7days" class="hasAnchor">
+            <a href="#NumInqLast6Mexcl7days" class="anchor"></a>
+            Feature: NumInqLast6Mexcl7days
+        </h2>
+        <img class="plot" src="img/variable_response_NumInqLast6Mexcl7days_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;e4e1eff6aadbeb7cef65d1c10de014ff&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="PercentTradesNeverDelq" class="hasAnchor">
+            <a href="#PercentTradesNeverDelq" class="anchor"></a>
+            Feature: PercentTradesNeverDelq
+        </h2>
+        <img class="plot" src="img/variable_response_PercentTradesNeverDelq_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;5d8dfc07e0019092c41e56a63c9f4287&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="AverageMInFile" class="hasAnchor">
+            <a href="#AverageMInFile" class="anchor"></a>
+            Feature: AverageMInFile
+        </h2>
+        <img class="plot" src="img/variable_response_AverageMInFile_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;214bc5b578c09456573e43dbc081a94c&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="MaxDelq2PublicRecLast12M" class="hasAnchor">
+            <a href="#MaxDelq2PublicRecLast12M" class="anchor"></a>
+            Feature: MaxDelq2PublicRecLast12M
+        </h2>
+        <img class="plot" src="img/variable_response_MaxDelq2PublicRecLast12M_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;340c7d39eb1f4a522df42890e7579b27&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="MSinceMostRecentInqexcl7days" class="hasAnchor">
+            <a href="#MSinceMostRecentInqexcl7days" class="anchor"></a>
+            Feature: MSinceMostRecentInqexcl7days
+        </h2>
+        <img class="plot" src="img/variable_response_MSinceMostRecentInqexcl7days_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;adc576721b43b964e11fdf3feb2638bf&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NetFractionRevolvingBurden" class="hasAnchor">
+            <a href="#NetFractionRevolvingBurden" class="anchor"></a>
+            Feature: NetFractionRevolvingBurden
+        </h2>
+        <img class="plot" src="img/variable_response_NetFractionRevolvingBurden_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;4f5b8e048e994bb4f8f79c45dabcb1fb&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NumRevolvingTradesWBalance" class="hasAnchor">
+            <a href="#NumRevolvingTradesWBalance" class="anchor"></a>
+            Feature: NumRevolvingTradesWBalance
+        </h2>
+        <img class="plot" src="img/variable_response_NumRevolvingTradesWBalance_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;ead7434a73e4b4bd3a7fecb1e47033de&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="PercentInstallTrades" class="hasAnchor">
+            <a href="#PercentInstallTrades" class="anchor"></a>
+            Feature: PercentInstallTrades
+        </h2>
+        <img class="plot" src="img/variable_response_PercentInstallTrades_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;83db3d8ae36647454b2487a974182a7c&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NumTradesOpeninLast12M" class="hasAnchor">
+            <a href="#NumTradesOpeninLast12M" class="anchor"></a>
+            Feature: NumTradesOpeninLast12M
+        </h2>
+        <img class="plot" src="img/variable_response_NumTradesOpeninLast12M_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;f2e1da0f46ddf3340fe3aace151cf769&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NetFractionInstallBurden" class="hasAnchor">
+            <a href="#NetFractionInstallBurden" class="anchor"></a>
+            Feature: NetFractionInstallBurden
+        </h2>
+        <img class="plot" src="img/variable_response_NetFractionInstallBurden_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;af3ec80943bdac2766cbdb3db000971d&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="MSinceMostRecentDelq" class="hasAnchor">
+            <a href="#MSinceMostRecentDelq" class="anchor"></a>
+            Feature: MSinceMostRecentDelq
+        </h2>
+        <img class="plot" src="img/variable_response_MSinceMostRecentDelq_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;58f2aea8b4aaf9a03b650dfbc4a387bd&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="PercentTradesWBalance" class="hasAnchor">
+            <a href="#PercentTradesWBalance" class="anchor"></a>
+            Feature: PercentTradesWBalance
+        </h2>
+        <img class="plot" src="img/variable_response_PercentTradesWBalance_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;ebb31b7934371f7a0d49aaa49e28ae1b&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NumInstallTradesWBalance" class="hasAnchor">
+            <a href="#NumInstallTradesWBalance" class="anchor"></a>
+            Feature: NumInstallTradesWBalance
+        </h2>
+        <img class="plot" src="img/variable_response_NumInstallTradesWBalance_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;c3c3af7e066eeabe646a5da4c5cf45bc&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="MSinceMostRecentTradeOpen" class="hasAnchor">
+            <a href="#MSinceMostRecentTradeOpen" class="anchor"></a>
+            Feature: MSinceMostRecentTradeOpen
+        </h2>
+        <img class="plot" src="img/variable_response_MSinceMostRecentTradeOpen_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;e7a3ffd1c9f9df6a79bf7e34823932b6&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NumTrades60Ever2DerogPubRec" class="hasAnchor">
+            <a href="#NumTrades60Ever2DerogPubRec" class="anchor"></a>
+            Feature: NumTrades60Ever2DerogPubRec
+        </h2>
+        <img class="plot" src="img/variable_response_NumTrades60Ever2DerogPubRec_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;d8fdff4ae08fa78f2eaad634f7bd72d3&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NumTotalTrades" class="hasAnchor">
+            <a href="#NumTotalTrades" class="anchor"></a>
+            Feature: NumTotalTrades
+        </h2>
+        <img class="plot" src="img/variable_response_NumTotalTrades_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;e5dde3a3127e964d516560685a48e917&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="MSinceOldestTradeOpen" class="hasAnchor">
+            <a href="#MSinceOldestTradeOpen" class="anchor"></a>
+            Feature: MSinceOldestTradeOpen
+        </h2>
+        <img class="plot" src="img/variable_response_MSinceOldestTradeOpen_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;4bd43635c4f9275c6f0b0dd1ec7487d7&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+    <div class="plot-container">
+        <h2 id="NumTrades90Ever2DerogPubRec" class="hasAnchor">
+            <a href="#NumTrades90Ever2DerogPubRec" class="anchor"></a>
+            Feature: NumTrades90Ever2DerogPubRec
+        </h2>
+        <img class="plot" src="img/variable_response_NumTrades90Ever2DerogPubRec_pdp.png" />
+        <br />
+        <help-panel help-url="https://pbiecek.github.io/DALEX_docs/3-3-variableResponse.html#variableResponse" docs-url="https://pbiecek.github.io/DALEX/reference/variable_response.html"></help-panel>
+        <div class="archivist-code"><p>Get this object: <code>archivist::loadFromLocalRepo(md5hash = &quot;1b5b28d2304cadd6070693fde73c0cfa&quot;, repoDir = &quot;summaryRMS/repository&quot;)</code></p></div>
+    </div>
+</div>
+    </div>
+
+
+  <footer>
+    <div class="footer">
+      <div class="text-center">Site built with <a href="https://github.com/MI2DataLab/modelDown">modelDown</a>.</div>
+      <div class="text-center" style="margin: 0px 0px 5px;">Last updated: 2019-07-08 13:19:11 (session_info: <a href="session_info/session_info.txt">.txt</a>, <a href="session_info/session_info.rda">.rda</a>)</div>
+    </div>
+  </footer>
+
+  </div>
+
+</body>
+</html>
