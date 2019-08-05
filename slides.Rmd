@@ -485,7 +485,7 @@ ggplot(loc_points, aes(y = Points, x = reorder(Variable, Points), fill = Variabl
 
 .pull-left70[
 ```{r echo=FALSE, error=FALSE, fig.width=7, fig.height = 5, message=FALSE, warning=FALSE,  out.width=1200, fig.fullwidth=TRUE, dpi = 900}
-
+library(iBreakDown)
 load("FICO_challenge/breakdown.rds")
 p1 <- plot(bd_lmr_13_tuned) + theme_light() + theme(legend.position = "none")
 p2 <- plot(bd_gbm_10000) + theme_light() + theme(legend.position = "none")
@@ -507,7 +507,7 @@ p2
 
 .pull-left70[
 ```{r echo=FALSE, error=FALSE, fig.width=7, fig.height = 5, message=FALSE, warning=FALSE,  out.width=1200, fig.fullwidth=TRUE, dpi = 900}
-
+library(iBreakDown)
 load("FICO_challenge/shapley.rds")
 p1 <- plot(sh_lmr_13_tuned) + theme_light() + theme(legend.position = "none")
 p2 <- plot(sh_gbm_10000) + theme_light() + theme(legend.position = "none")
