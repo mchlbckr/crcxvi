@@ -523,7 +523,7 @@ p2
 
 ---
 class: inverse
-# Results: Conclusion
+# Conclusion
 
 ---
 
@@ -533,7 +533,7 @@ Rf. `r citeNatbib(bib = myBib, keys = "bie2019mod", textual = TRUE)` `r NoCite(b
 
 .pull-left70[
 <div class = "wrap">
-<iframe class = "frame"  src="http://gosiewska.com/examples/xai_in_credit_scoring/"></iframe>
+<iframe class = "frame"  src="http://modeldown.buecker.ms/"></iframe>
 </div>
 ]
 
