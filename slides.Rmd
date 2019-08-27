@@ -81,6 +81,19 @@ class: inverse
 
 # Introduction
 
+### Michael Bücker
+Professor of Data Science  at Münster School of Business  
+<br>
+
+<br>
+<div align = "center">
+<img src="img/intro.png" width=100%>
+</div>
+
+---
+
+# Introduction
+
 + Main requirement for Credit Scoring models: provide a risk prediction that is **as accurate as possible**
 + In addition, regulators demand these models to be **transparent and auditable**
 + Therefore, very **simple predictive models** such as Logistic Regression or Decision Trees are still widely used `r citeNatbib(bib = myBib, keys = c("les15ben", "bis2014onc"), abbreviate = TRUE, textual = FALSE)` `r NoCite(bib = myBib, "les15ben", "bis2014onc")`
@@ -92,7 +105,7 @@ class: inverse
 # Research Approach
 
 + For an open data set we build a traditional and still state-of-the-art Score Card model 
-+ In addition, we built alternative Machine Learning Black Box models
++ In addition, we build alternative Machine Learning Black Box models
 + We  use model-agnostic methods for interpretable Machine Learning to showcase transparency of such models
 + For computations we use R and respective packages 
 `r citeNatbib(bib = myBib, keys = c("bie2018dal", "mol2018iml"), abbreviate = TRUE, textual = FALSE)` `r NoCite(bib = myBib, "bie2018dal", "mol2018iml")`
@@ -145,7 +158,7 @@ Steps for Score Card construction using Logistic Regression
 ]
 ---
 
-# The incumbent: Score Cards
+# Score Cards: Manual binning
 
 .pull-left70[
 Manual binning allows for
@@ -162,7 +175,7 @@ Manual binning allows for
 .pull-right70[
 ... and means a lot of manual work
 <div align = "center">
-<img src="https://media.giphy.com/media/uJi32NRF7jOA8/giphy.gif" width=100%>
+<img src="https://media.giphy.com/media/RO5JLFmiHnN6g/giphy.gif" width=100%>
 </div>
 ]
 
@@ -540,10 +553,9 @@ Rf. `r citeNatbib(bib = myBib, keys = "bie2019mod", textual = TRUE)` `r NoCite(b
 ]
 
 .pull-right70[
-<br>
 <a>
 <div align = "center">
-<img src="img/qr.png" width=120%>
+<img src="img/qr.png" width=110%>
 </div>
 </a>
 ]
@@ -553,7 +565,7 @@ Rf. `r citeNatbib(bib = myBib, keys = "bie2019mod", textual = TRUE)` `r NoCite(b
 
 + We have built models for Credit Scoring using Score Cards and Machine Learning
 + Predictive power of Machine Learning models was superior (in our example only slightly, other studies show clearer overperformance)
-+ Model agnostic methods for interpretable Machine Learning are able to make predictions explainable in the same way
++ Model agnostic methods for interpretable Machine Learning are able to meet the degree of explainability of Score Cards and may even exceed it
 
 ---
 # References (1/3)
