@@ -227,6 +227,45 @@ We tested a couple of Machine Learning algorithms ...
 ]
 
 ---
+
+# Explainability of Machine Learning models
+
+.pull-left70[
+There are many model-agnostic methods for interpretable ML today; see `r citeNatbib(bib = myBib, keys = "mol2019int", textual = TRUE)` `r NoCite(bib = myBib, "mol2019int")` for a good overview.
+
++ Partial Dependence Plots (PDP)
++ Individual Conditional Expectation (ICE)
++ Accumulated Local Effects (ALE)
++ Feature Importance
++ Global Surrogate and Local Surrogate (LIME)
++ Shapley Values
++ ...
+]
+
+.pull-right70[
+<div class = "wrap2">
+<iframe class = "frame2"  src="https://christophm.github.io/interpretable-ml-book/"></iframe>
+</div>
+]
+---
+
+# Implementation in R: DALEX
+
+
+.pull-left70[
+<div align = "center">
+<img src="img/dalex.png" width=100%>
+</div>
+]
+
+.pull-right70[
++ Descriptive mAchine Learning EXplanations
++ DALEX is a set of tools that help to understand how complex models are working
+]
+
+
+
+---
 class: inverse
 # Results: Model performance
 
@@ -315,43 +354,6 @@ For comparison of explainability, we choose
 ---
 class: inverse
 # Results: Global explanations
-
----
-
-# Explainability of Machine Learning models
-
-.pull-left70[
-There are many model-agnostic methods for interpretable ML today; see `r citeNatbib(bib = myBib, keys = "mol2019int", textual = TRUE)` `r NoCite(bib = myBib, "mol2019int")` for a good overview.
-
-+ Partial Dependence Plots (PDP)
-+ Individual Conditional Expectation (ICE)
-+ Accumulated Local Effects (ALE)
-+ Feature Importance
-+ Global Surrogate and Local Surrogate (LIME)
-+ Shapley Values
-+ ...
-]
-
-.pull-right70[
-<div class = "wrap2">
-<iframe class = "frame2"  src="https://christophm.github.io/interpretable-ml-book/"></iframe>
-</div>
-]
----
-
-# Implementation in R: DALEX
-
-
-.pull-left70[
-<div align = "center">
-<img src="img/dalex.png" width=100%>
-</div>
-]
-
-.pull-right70[
-+ Descriptive mAchine Learning EXplanations
-+ DALEX is a set of tools that help to understand how complex models are working
-]
 
 ---
 

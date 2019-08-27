@@ -71,7 +71,7 @@ Professor of Data Science  at Münster School of Business
 
 + Main requirement for Credit Scoring models: provide a risk prediction that is **as accurate as possible**
 + In addition, regulators demand these models to be **transparent and auditable**
-+ Therefore, very **simple predictive models** such as Logistic Regression or Decision Trees are still widely used (Lessmann et al. 2015; Bischl et al. 2014) 
++ Therefore, very **simple predictive models** such as Logistic Regression or Decision Trees are still widely used (Lessmann, Baesens, Seow, and Thomas 2015; Bischl, Kühn, and Szepannek 2014) 
 + Superior predictive power of modern **Machine Learning algorithms** cannot be fully leveraged
 + A lot of **potential is missed**, leading to higher reserves or more credit defaults  (Szepannek 2017) 
 
@@ -83,7 +83,7 @@ Professor of Data Science  at Münster School of Business
 + In addition, we build alternative Machine Learning Black Box models
 + We  use model-agnostic methods for interpretable Machine Learning to showcase transparency of such models
 + For computations we use R and respective packages 
-(Biecek 2018; Molnar et al. 2018) 
+(Biecek 2018; Molnar, Bischl, and Casalicchio 2018) 
 
 
 
@@ -202,6 +202,45 @@ We tested a couple of Machine Learning algorithms ...
 ]
 
 ---
+
+# Explainability of Machine Learning models
+
+.pull-left70[
+There are many model-agnostic methods for interpretable ML today; see Molnar (2019)  for a good overview.
+
++ Partial Dependence Plots (PDP)
++ Individual Conditional Expectation (ICE)
++ Accumulated Local Effects (ALE)
++ Feature Importance
++ Global Surrogate and Local Surrogate (LIME)
++ Shapley Values
++ ...
+]
+
+.pull-right70[
+&lt;div class = "wrap2"&gt;
+&lt;iframe class = "frame2"  src="https://christophm.github.io/interpretable-ml-book/"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+]
+---
+
+# Implementation in R: DALEX
+
+
+.pull-left70[
+&lt;div align = "center"&gt;
+&lt;img src="img/dalex.png" width=100%&gt;
+&lt;/div&gt;
+]
+
+.pull-right70[
++ Descriptive mAchine Learning EXplanations
++ DALEX is a set of tools that help to understand how complex models are working
+]
+
+
+
+---
 class: inverse
 # Results: Model performance
 
@@ -240,43 +279,6 @@ For comparison of explainability, we choose
 ---
 class: inverse
 # Results: Global explanations
-
----
-
-# Explainability of Machine Learning models
-
-.pull-left70[
-There are many model-agnostic methods for interpretable ML today; see Molnar (2019)  for a good overview.
-
-+ Partial Dependence Plots (PDP)
-+ Individual Conditional Expectation (ICE)
-+ Accumulated Local Effects (ALE)
-+ Feature Importance
-+ Global Surrogate and Local Surrogate (LIME)
-+ Shapley Values
-+ ...
-]
-
-.pull-right70[
-&lt;div class = "wrap2"&gt;
-&lt;iframe class = "frame2"  src="https://christophm.github.io/interpretable-ml-book/"&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-]
----
-
-# Implementation in R: DALEX
-
-
-.pull-left70[
-&lt;div align = "center"&gt;
-&lt;img src="img/dalex.png" width=100%&gt;
-&lt;/div&gt;
-]
-
-.pull-right70[
-+ Descriptive mAchine Learning EXplanations
-+ DALEX is a set of tools that help to understand how complex models are working
-]
 
 ---
 
@@ -405,7 +407,7 @@ class: inverse
 
 # Modeldown: HTML summaries for predictive Models 
 
-Rf. Biecek et al. (2019) 
+Rf. Biecek, Tatarynowicz, Romaszko, and Urbański (2019) 
 
 .pull-left70[
 &lt;div class = "wrap"&gt;
