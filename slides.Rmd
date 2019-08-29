@@ -68,6 +68,16 @@ options(htmltools.dir.version = FALSE)
 
 
 
+---
+
+
+
+class: empty
+background-image: url("https://media.giphy.com/media/pJOiRZcsxni5G/giphy.gif")
+background-size: contain
+
+
+
 
 
 
