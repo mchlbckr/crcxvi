@@ -550,7 +550,7 @@ Rf. `r citeNatbib(bib = myBib, keys = "bie2019mod", textual = TRUE)` `r NoCite(b
 
 .pull-left70[
 <div class = "wrap">
-<iframe class = "frame"  src="http://modeldown.buecker.ms/"></iframe>
+<iframe class = "frame"  src="https://buecker.netlify.com/modeldown"></iframe>
 </div>
 ]
 
