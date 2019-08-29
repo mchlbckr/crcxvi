@@ -238,7 +238,7 @@ There are many model-agnostic methods for interpretable ML today; see `r citeNat
 + Accumulated Local Effects (ALE)
 + Feature Importance
 + Global Surrogate and Local Surrogate (LIME)
-+ Shapley Values
++ Shapley Values, SHAP
 + ...
 ]
 
@@ -462,7 +462,7 @@ class: inverse
 + Instance-level exploration helps to understand how a model yields a prediction for a single observation
 + Model-agnostic approaches are 
   + additive Breakdowns
-  + Shapley Values 
+  + Shapley Values, SHAP
   + LIME
 + In Credit Scoring, this explanation makes each credit decision transparent
 ]
@@ -518,7 +518,7 @@ p2
 
 ---
 
-# Model agnostic: Shapley values
+# Model agnostic: SHAP
 
 .pull-left70[
 ```{r echo=FALSE, error=FALSE, fig.width=7, fig.height = 5, message=FALSE, warning=FALSE,  out.width=1200, fig.fullwidth=TRUE, dpi = 900}
